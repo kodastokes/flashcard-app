@@ -7,7 +7,16 @@ function Layout() {
     <>
       <Header />
       <div className="container">
-        {/* TODO: Implement the screen starting here */}
+        <div>
+        <button>Create Deck</button>
+        </div>
+        <div>
+          <h2>Rendering in React</h2>
+          <p>React's component structure allows for quickly building a complex web application that relies on DOM manipulation.</p>
+          <button>View</button>
+          <button>Study</button>
+          <button>Delete</button>
+        </div>
         <NotFound />
       </div>
     </>
