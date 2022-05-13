@@ -1,13 +1,12 @@
 import React from "react";
-import CardList from "./CardList";
+import CardList from "../Cards/CardList";
 
 function SingleDeckDetail({
-  deck: { name, description },
+  deck: { name, description, cards },
   handleEdit,
   handleStudy,
   handleAddCards,
   handleDelete,
-  cards,
 }) {
   return (
     <>
