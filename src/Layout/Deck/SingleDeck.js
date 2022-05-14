@@ -1,11 +1,19 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
+import { deleteDeck } from "../../utils/api";
 
-function SingleDeck({
-  deck: { name, description },
-  handleView,
-  handleStudy,
-  handleDelete,
-}) {
+function SingleDeck({ deck: { name, description }, handleView, handleStudy, handleDelete }) {
+
+  // let history = useHistory();
+
+  // const handleDelete = async (id) => {
+  //   const result = window.confirm("Are you sure you want to delete this post?");
+  //   if (result) {
+  //     await deleteDeck(id);
+  //     history.push("/");
+  //   }
+  // };
+
   return (
     <div>
       <h2>{name}</h2>
