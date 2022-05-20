@@ -12,3 +12,6 @@ function SingleCardDetail({ card: { front, back }, handleEdit, handleDelete }) {
 }
 
 export default SingleCardDetail;
+
+
+//send all decks here and then useParams to access the id and use that id to access the correct array in decks

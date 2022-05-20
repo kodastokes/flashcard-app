@@ -1,9 +1,9 @@
 import React from "react";
 import SingleDeck from "./SingleDeck";
 
-function DeckList({ decks, handleDelete }) {
+function DeckList({ decks, renderHomePage }) {
   let deckList = decks.map((deck, index) => (
-    <SingleDeck handleDelete={() => handleDelete(index)} deck={deck} key={index}/>
+    <SingleDeck renderHomePage={renderHomePage} deck={deck} key={index}/>
   ));
 
   return <>{deckList}</>;

@@ -9,8 +9,13 @@ import { Route } from "react-router-dom";
 import { Switch } from "react-router-dom";
 import { listDecks } from "../utils/api";
 import CreateDeckButton from "./Buttons/CreateDeckButton";
+import { useParams } from "react-router-dom";
+import { useRouteMatch } from "react-router-dom";
 
 function Layout() {
+  const params = useParams();
+  const { url } = useRouteMatch();
+
   const singleTestDeck = {
     id: 1,
     name: "Rendering in React",
@@ -47,34 +52,38 @@ function Layout() {
 
   const [decks, setDecks] = useState([]);
 
+  //console.log(decks)
+
   useEffect(() => {
     listDecks().then((result) => setDecks(result));
   }, []);
-  
+
+  const renderHomePage = () => {
+    listDecks().then((result) => setDecks(result));
+  };
+  // add function that has line 51 so when the deletehandler getes used, it updates the state and causes a re-render
 
   return (
     <>
       <Header />
       <div className="container">
         <Switch>
-
           <Route exact path={"/"}>
             <CreateDeckButton />
-            <DeckList decks={decks} />
+            <DeckList decks={decks} renderHomePage={renderHomePage} />
           </Route>
 
           <Route path={"/decks/new"}>
             <DeckCreate />
           </Route>
 
-          {/* <Route path={"/decks/:deckId"}>
+          <Route path={"/decks/:deckId"}>
             <SingleDeckDetail deck={singleTestDeck} />
-          </Route> */}         
+          </Route>
 
           <Route>
             <NotFound />
           </Route>
-
         </Switch>
       </div>
     </>
@@ -82,4 +91,3 @@ function Layout() {
 }
 
 export default Layout;
-

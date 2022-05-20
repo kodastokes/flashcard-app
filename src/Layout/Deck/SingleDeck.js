@@ -2,21 +2,23 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { deleteDeck } from "../../utils/api";
 
-function SingleDeck({ deck: { name, description }, handleView, handleStudy, handleDelete }) {
+function SingleDeck({ deck: { name, description, id, cards }, handleView, handleStudy, renderHomePage }) {
 
-  // let history = useHistory();
+  const handleDelete = async () => {
+    const result = window.confirm("Are you sure you want to delete this post?");
+    if (result) {
+      await deleteDeck(id);
+      renderHomePage()
+    }
+  };
 
-  // const handleDelete = async (id) => {
-  //   const result = window.confirm("Are you sure you want to delete this post?");
-  //   if (result) {
-  //     await deleteDeck(id);
-  //     history.push("/");
-  //   }
-  // };
+  // layout has a function that gets from api
+  // 
 
   return (
     <div>
       <h2>{name}</h2>
+      <p>{cards.length} cards</p>
       <p>{description}</p>
       <button onClick={handleView}>View</button>
       <button onClick={handleStudy}>Study</button>
