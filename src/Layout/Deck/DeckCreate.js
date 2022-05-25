@@ -1,27 +1,27 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { createDeck } from "../../utils/api";
 
-/**
- * Displays the form to create a new post, which can be either an image or a text post.
- *
- * When the form is submitted, a new post is created and the form contents cleared.
- */
-function DeckCreate({ createDeck }) {
+function DeckCreate() {
+  const history = useHistory();
+
   const [name, setName] = useState("");
   const handleNameChange = (event) => setName(event.target.value);
 
   const [description, setDescription] = useState("");
   const handleDescriptionChange = (event) => setDescription(event.target.value);
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   createPost({ type, post });
-  //   setType("Text");
-  //   setPost("");
-  // };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    createDeck({ name, description }).then(({ id }) =>
+      history.push("/decks/" + id)
+    );
+  };
 
   return (
     <>
-      <form name="name">
+      <form name="name" onSubmit={handleSubmit}>
         <fieldset>
           <legend>Create Deck</legend>
           <div>
@@ -47,7 +47,9 @@ function DeckCreate({ createDeck }) {
             ></textarea>
           </div>
           <div>
-            <button>Cancel</button>
+            <Link to="/">
+              <button>Cancel</button>
+            </Link>
             <button type="submit">Submit</button>
           </div>
         </fieldset>
