@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { readDeck } from "../../utils/api";
+import { deleteDeck, readDeck } from "../../utils/api";
 import CardList from "../Cards/CardList";
 
 function SingleDeckDetail({
+  renderHomePage,
   handleEdit,
   handleStudy,
   handleAddCards,
-  handleDelete,
 }) {
-  
+  const history = useHistory()
   const params = useParams()
   const deckId = params.deckId
 
@@ -20,6 +21,15 @@ function SingleDeckDetail({
   }, []);
 
   const { name, description, cards = [], id } = deck
+
+  const handleDelete = async () => {
+    const result = window.confirm("Are you sure you want to delete this post?");
+    if (result) {
+      await deleteDeck(id);
+      renderHomePage();
+      history.push("/")
+    }
+  };
 
   return (
     <>
