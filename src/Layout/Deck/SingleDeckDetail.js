@@ -22,7 +22,7 @@ function SingleDeckDetail({
     readDeck(deckId).then((result) => setDeck(result));
   }, []);
 
-  const renderDeckDetail = () => {
+  const renderSingleDeckDetail = () => {
     readDeck(deckId).then((result) => setDeck(result));
   };
 
@@ -49,7 +49,7 @@ function SingleDeckDetail({
       </div>
       <div>
         <h2>Cards</h2>
-        <CardList cards={cards} renderDeckDetail={renderDeckDetail} />
+        <CardList cards={cards} renderSingleDeckDetail={renderSingleDeckDetail} />
       </div>
     </>
   );

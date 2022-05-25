@@ -63,56 +63,56 @@ describe("Decks", () => {
     });
   });
 
-  test("route for /decks/:deckId", async () => {
-    const mockDeck = {
-      name: "Mock Deck 3",
-      description: "MD",
-      id: 3,
-      cards: [
-        {
-          id: 4,
-          front: "What has ears but cannot hear?",
-          back: "A cornfield.",
-          deckId: 8,
-        },
-      ],
-    };
+  // test("route for /decks/:deckId", async () => {
+  //   const mockDeck = {
+  //     name: "Mock Deck 3",
+  //     description: "MD",
+  //     id: 3,
+  //     cards: [
+  //       {
+  //         id: 4,
+  //         front: "What has ears but cannot hear?",
+  //         back: "A cornfield.",
+  //         deckId: 8,
+  //       },
+  //     ],
+  //   };
 
-    readDeck.mockResolvedValue(mockDeck);
+  //   readDeck.mockResolvedValue(mockDeck);
 
-    const history = createMemoryHistory();
-    history.push("/decks/3");
-    render(
-      <Router history={history}>
-        <App />
-      </Router>
-    );
-
-    const titleElements = await screen.findAllByText("Mock Deck 3");
-    expect(titleElements.length).toBeGreaterThanOrEqual(1);
-
-    expect(screen.getByText("What has ears but cannot hear?")).toBeTruthy();
-    expect(screen.getByText("A cornfield.")).toBeTruthy();
-  });
-
-  // test("route for /decks/new", async () => {
   //   const history = createMemoryHistory();
-  //   history.push("/decks/new");
-  //   const { container } = render(
+  //   history.push("/decks/3");
+  //   render(
   //     <Router history={history}>
   //       <App />
   //     </Router>
   //   );
 
-  //   const titleElements = await screen.findAllByText("Create Deck");
+  //   const titleElements = await screen.findAllByText("Mock Deck 3");
   //   expect(titleElements.length).toBeGreaterThanOrEqual(1);
 
-  //   const inputs = container.querySelectorAll("input");
-  //   expect(inputs).toHaveLength(1);
-
-  //   const textAreas = container.querySelectorAll("textarea");
-  //   expect(textAreas).toHaveLength(1);
+  //   expect(screen.getByText("What has ears but cannot hear?")).toBeTruthy();
+  //   expect(screen.getByText("A cornfield.")).toBeTruthy();
   // });
+
+  test("route for /decks/new", async () => {
+    const history = createMemoryHistory();
+    history.push("/decks/new");
+    const { container } = render(
+      <Router history={history}>
+        <App />
+      </Router>
+    );
+
+    const titleElements = await screen.findAllByText("Create Deck");
+    expect(titleElements.length).toBeGreaterThanOrEqual(1);
+
+    const inputs = container.querySelectorAll("input");
+    expect(inputs).toHaveLength(1);
+
+    const textAreas = container.querySelectorAll("textarea");
+    expect(textAreas).toHaveLength(1);
+  });
 
   // test("route for /decks/:deckId/edit", async () => {
   //   const mockDeck = {

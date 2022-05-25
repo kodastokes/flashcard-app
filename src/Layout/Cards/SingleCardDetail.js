@@ -4,7 +4,7 @@ import { deleteCard } from "../../utils/api";
 function SingleCardDetail({
   card: { front, back, id },
   handleEdit,
-  renderDeckDetail,
+  renderSingleDeckDetail,
 }) {
   const handleDelete = async () => {
     const result = window.confirm(
@@ -12,7 +12,7 @@ function SingleCardDetail({
     );
     if (result) {
       await deleteCard(id);
-      renderDeckDetail();
+      renderSingleDeckDetail();
     }
   };
 
@@ -27,5 +27,3 @@ function SingleCardDetail({
 }
 
 export default SingleCardDetail;
-
-//send all decks here and then useParams to access the id and use that id to access the correct array in decks
