@@ -78,7 +78,7 @@ function Layout() {
           </Route>
 
           <Route path={"/decks/:deckId"}>
-            <SingleDeckDetail deck={singleTestDeck} />
+            <SingleDeckDetail />
           </Route>
 
           <Route>
