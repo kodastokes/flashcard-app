@@ -10,7 +10,9 @@ function SingleDeck({
   renderHomePage,
 }) {
   const handleDelete = async () => {
-    const result = window.confirm("Are you sure you want to delete this post?");
+    const result = window.confirm(
+      "Delete this deck? You will not be able to recover it."
+    );
     if (result) {
       await deleteDeck(id);
       renderHomePage();

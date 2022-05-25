@@ -10,24 +10,30 @@ function SingleDeckDetail({
   handleStudy,
   handleAddCards,
 }) {
-  const history = useHistory()
-  const params = useParams()
-  const deckId = params.deckId
+  const history = useHistory();
+  const params = useParams();
+  const deckId = params.deckId;
 
   const [deck, setDeck] = useState({});
+
+  const { name, description, cards = [], id } = deck;
 
   useEffect(() => {
     readDeck(deckId).then((result) => setDeck(result));
   }, []);
 
-  const { name, description, cards = [], id } = deck
+  const renderDeckDetail = () => {
+    readDeck(deckId).then((result) => setDeck(result));
+  };
 
   const handleDelete = async () => {
-    const result = window.confirm("Are you sure you want to delete this post?");
+    const result = window.confirm(
+      "Delete this deck? You will not be able to recover it."
+    );
     if (result) {
       await deleteDeck(id);
       renderHomePage();
-      history.push("/")
+      history.push("/");
     }
   };
 
@@ -43,7 +49,7 @@ function SingleDeckDetail({
       </div>
       <div>
         <h2>Cards</h2>
-        <CardList cards={cards} />
+        <CardList cards={cards} renderDeckDetail={renderDeckDetail} />
       </div>
     </>
   );

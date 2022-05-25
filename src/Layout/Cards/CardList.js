@@ -1,9 +1,13 @@
 import React from "react";
 import SingleCardDetail from "./SingleCardDetail";
 
-function CardList({ cards, handleDelete }) {
+function CardList({ cards, renderDeckDetail }) {
   let cardsList = cards.map((card, index) => (
-    <SingleCardDetail handleDelete={() => handleDelete(index)} card={card} key={index}/>
+    <SingleCardDetail
+      card={card}
+      key={index}
+      renderDeckDetail={renderDeckDetail}
+    />
   ));
 
   return <>{cardsList}</>;
