@@ -3,7 +3,8 @@ import { Link, useParams, useHistory } from "react-router-dom";
 import { readDeck } from "../../utils/api";
 
 function StudyCards() {
-  const { deckId } = useParams();
+  const params = useParams();
+  const deckId = params.deckId
   const history = useHistory();
 
   const [deck, setDeck] = useState({});
@@ -12,11 +13,19 @@ function StudyCards() {
   const [front, isFront] = useState(true);
 
   useEffect(() => {
-    readDeck(deckId)
-        .then((result) =>{ 
-            setDeck(result)
-            setCards(result.cards);
-  })}, []);
+    readDeck(deckId).then((result) => {
+      setDeck(result);
+      setCards(result.cards);
+    });
+  }, [deckId]);
+
+  function flipCard() {
+    if (front) {
+      isFront(false);
+    } else {
+      isFront(true);
+    }
+  }
 
   function nextCard(index, numberOfCards) {
     if (index < numberOfCards) {
@@ -36,15 +45,7 @@ function StudyCards() {
     }
   }
 
-  function flipCard() {
-    if (front) {
-      isFront(false);
-    } else {
-      isFront(true);
-    }
-  }
-
-  function showNextButton(cards, index) {
+  function nextButton(cards, index) {
     if (front) {
       return null;
     } else {
@@ -64,10 +65,10 @@ function StudyCards() {
                 <div>{`Card ${index + 1} of ${cards.length}`}</div>
                 <div>{front ? card.front : card.back}</div>
                 <button onClick={flipCard}>Flip</button>
-                {showNextButton(cards, index)}
+                {nextButton(cards, index)}
               </div>
             );
-          }
+          } else return null;
         })}
       </div>
     );

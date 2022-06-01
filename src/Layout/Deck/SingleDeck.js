@@ -1,12 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import { deleteDeck } from "../../utils/api";
 
 function SingleDeck({
   deck: { name, description, id, cards },
-  handleView,
-  handleStudy,
   renderHomePage,
 }) {
   const handleDelete = async () => {

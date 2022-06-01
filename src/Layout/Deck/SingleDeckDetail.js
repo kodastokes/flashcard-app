@@ -21,7 +21,7 @@ function SingleDeckDetail({
 
   useEffect(() => {
     readDeck(deckId).then((result) => setDeck(result));
-  }, []);
+  }, [deckId]);
 
   const renderSingleDeckDetail = () => {
     readDeck(deckId).then((result) => setDeck(result));
@@ -43,7 +43,9 @@ function SingleDeckDetail({
       <div>
         <h2>{name}</h2>
         <p>{description}</p>
-        <button onClick={handleEdit}>Edit</button>
+        <Link to={`/decks/${id}/edit`}>
+          <button>Edit</button>
+        </Link>
         <Link to={`/decks/${id}/study`}>
           <button>Study</button>
         </Link>
