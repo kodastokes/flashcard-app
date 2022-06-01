@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { readDeck, updateDeck } from "../../utils/api";
 import DeckForm from "./DeckForm";
@@ -28,16 +29,27 @@ function DeckEdit() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    deck.name = inputName
-    deck.description = inputDescription
+    deck.name = inputName;
+    deck.description = inputDescription;
     updateDeck(deck).then(({ id }) => history.push(`/decks/${id}`));
   };
 
   return (
     <>
+      <div>
+        <ol>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to={`/decks/${deckId}`}>{deck.name}</Link>
+          </li>
+          <li>Study Cards</li>
+        </ol>
+      </div>
       <form name="name" onSubmit={handleSubmit}>
         <fieldset>
-          <legend>Edit Deck</legend>
+          <h2> Edit Deck </h2>
           <DeckForm
             name={inputName}
             description={inputDescription}

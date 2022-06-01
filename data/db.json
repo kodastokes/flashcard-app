@@ -11,14 +11,9 @@
       "id": 2
     },
     {
-      "name": "test",
-      "description": "test",
+      "name": "Test Deck",
+      "description": "Deck to add cards to",
       "id": 3
-    },
-    {
-      "name": "testttt",
-      "description": "testttt",
-      "id": 4
     }
   ],
   "cards": [
@@ -58,6 +53,18 @@
       "back": "b",
       "deckId": 1,
       "id": 7
+    },
+    {
+      "front": "test 1",
+      "back": "test 1",
+      "deckId": 1,
+      "id": 8
+    },
+    {
+      "front": "test 2",
+      "back": "test 2",
+      "deckId": 1,
+      "id": 9
     }
   ]
 }

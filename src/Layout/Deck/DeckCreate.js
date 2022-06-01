@@ -24,7 +24,7 @@ function DeckCreate() {
     <>
       <form name="name" onSubmit={handleSubmit}>
         <fieldset>
-          <legend>Create Deck</legend>
+          <h2>Create Deck</h2>
           <DeckForm
             name={name}
             description={description}

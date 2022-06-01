@@ -11,6 +11,7 @@ import CreateDeckButton from "./Buttons/CreateDeckButton";
 import { useParams } from "react-router-dom";
 import StudyCards from "./Cards/StudyCards";
 import DeckEdit from "./Deck/DeckEdit";
+import CardCreate from "./Cards/CardCreate";
 
 function Layout() {
   const params = useParams();
@@ -48,6 +49,10 @@ function Layout() {
 
           <Route path={"/decks/:deckId/edit"}>
             <DeckEdit />
+          </Route>
+
+          <Route path={"/decks/:deckId/cards/new"}>
+            <CardCreate />
           </Route>
 
           <Route path={"/decks/:deckId"}>
