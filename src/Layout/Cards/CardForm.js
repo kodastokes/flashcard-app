@@ -8,14 +8,14 @@ function CardForm({
       <>
         <div>
           <label htmlFor="front"> Front </label>
-          <input
+          <textarea
             id="front"
             front="front"
             placeholder="Front of Card"
             required={true}
             onChange={handleFrontChange}
             value={front}
-          ></input>
+          ></textarea>
         </div>
         <div>
           <label htmlFor="back"> Back </label>

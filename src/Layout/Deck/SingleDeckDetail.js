@@ -49,7 +49,9 @@ function SingleDeckDetail({
         <Link to={`/decks/${id}/study`}>
           <button>Study</button>
         </Link>
-        <button onClick={handleAddCards}>Add Cards</button>
+        <Link to={`/decks/${id}/cards/new`}>
+          <button>Add Cards</button>
+        </Link>
         <button onClick={handleDelete}>Delete</button>
       </div>
       <div>

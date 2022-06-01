@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { deleteCard } from "../../utils/api";
 
 function SingleCardDetail({
-  card: { front, back, id },
+  card: { front, back, id, deckId },
   handleEdit,
   renderSingleDeckDetail,
 }) {
@@ -20,7 +21,9 @@ function SingleCardDetail({
     <div>
       <p>{front}</p>
       <p>{back}</p>
-      <button onClick={handleEdit}>Edit</button>
+      <Link to= {`/decks/${deckId}/cards/${id}/edit`} >
+         <button>Edit</button>
+      </Link>
       <button onClick={handleDelete}>Delete</button>
     </div>
   );

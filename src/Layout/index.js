@@ -12,6 +12,7 @@ import { useParams } from "react-router-dom";
 import StudyCards from "./Cards/StudyCards";
 import DeckEdit from "./Deck/DeckEdit";
 import CardCreate from "./Cards/CardCreate";
+import CardEdit from "./Cards/CardEdit";
 
 function Layout() {
   const params = useParams();
@@ -53,6 +54,10 @@ function Layout() {
 
           <Route path={"/decks/:deckId/cards/new"}>
             <CardCreate />
+          </Route>
+
+          <Route path={"/decks/:deckId/cards/:cardId/edit"}>
+            <CardEdit />
           </Route>
 
           <Route path={"/decks/:deckId"}>
