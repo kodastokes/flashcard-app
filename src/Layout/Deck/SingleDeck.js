@@ -16,12 +16,6 @@ function SingleDeck({
     }
   };
 
-
-
-  // link around the button
-  // layout has a function that gets from api
-  //
-
   return (
     <div>
       <h2>{name}</h2>

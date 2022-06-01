@@ -8,18 +8,13 @@ import { Route } from "react-router-dom";
 import { Switch } from "react-router-dom";
 import { listDecks } from "../utils/api";
 import CreateDeckButton from "./Buttons/CreateDeckButton";
-import { useParams } from "react-router-dom";
 import StudyCards from "./Cards/StudyCards";
 import DeckEdit from "./Deck/DeckEdit";
 import CardCreate from "./Cards/CardCreate";
 import CardEdit from "./Cards/CardEdit";
 
 function Layout() {
-  const params = useParams();
-
   const [decks, setDecks] = useState([]);
-
-  //console.log(decks)
 
   useEffect(() => {
     listDecks().then((result) => setDecks(result));
@@ -28,7 +23,6 @@ function Layout() {
   const renderHomePage = () => {
     listDecks().then((result) => setDecks(result));
   };
-  // add function that has line 51 so when the deletehandler getes used, it updates the state and causes a re-render
 
   return (
     <>

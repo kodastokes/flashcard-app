@@ -4,7 +4,6 @@ import { deleteCard } from "../../utils/api";
 
 function SingleCardDetail({
   card: { front, back, id, deckId },
-  handleEdit,
   renderSingleDeckDetail,
 }) {
   const handleDelete = async () => {

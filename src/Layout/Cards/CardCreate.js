@@ -1,22 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import { createCard, readDeck } from "../../utils/api";
 import CardForm from "./CardForm";
 
 function CardCreate() {
-  const history = useHistory();
   const params = useParams();
   const deckId = params.deckId;
 
-  const cardFormat = {
+  const newCard = {
     front: "",
     back: "",
   };
 
   const [deck, setDeck] = useState({});
-  const [newCard, setNewCard] = useState(cardFormat);
 
   const [front, setFront] = useState("");
   const handleFrontChange = (event) => setFront(event.target.value);

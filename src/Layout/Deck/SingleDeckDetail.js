@@ -7,9 +7,6 @@ import CardList from "../Cards/CardList";
 
 function SingleDeckDetail({
   renderHomePage,
-  handleEdit,
-  handleStudy,
-  handleAddCards,
 }) {
   const history = useHistory();
   const params = useParams();

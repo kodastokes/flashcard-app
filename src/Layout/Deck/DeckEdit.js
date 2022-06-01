@@ -10,8 +10,13 @@ function DeckEdit() {
   const params = useParams();
   const deckId = params.deckId;
 
-  const [deck, setDeck] = useState({});
+//   const [deck, setDeck] = useState({});
 
+ const deck = {
+  id: "",
+  name: "",
+  description: ""
+}
   const [inputName, setInputName] = useState("");
   const handleNameChange = (event) => setInputName(event.target.value);
 
@@ -19,9 +24,17 @@ function DeckEdit() {
   const handleDescriptionChange = (event) =>
     setInputDescription(event.target.value);
 
+//   useEffect(() => {
+//     readDeck(deckId).then((result) => {
+//       setDeck(result);
+//       setInputName(result.name);
+//       setInputDescription(result.description);
+//     });
+//   }, [deckId]);
+
   useEffect(() => {
     readDeck(deckId).then((result) => {
-      setDeck(result);
+      deck.name = result.name
       setInputName(result.name);
       setInputDescription(result.description);
     });

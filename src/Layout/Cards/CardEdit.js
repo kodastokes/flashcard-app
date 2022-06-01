@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { readCard, readDeck, updateCard, updateDeck } from "../../utils/api";
+import { readCard, readDeck, updateCard } from "../../utils/api";
 import CardForm from "./CardForm";
 
 function CardEdit() {
