@@ -11,6 +11,7 @@ import { listDecks } from "../utils/api";
 import CreateDeckButton from "./Buttons/CreateDeckButton";
 import { useParams } from "react-router-dom";
 import { useRouteMatch } from "react-router-dom";
+import StudyCards from "./Cards/StudyCards";
 
 function Layout() {
   const params = useParams();
@@ -75,6 +76,10 @@ function Layout() {
 
           <Route path={"/decks/new"}>
             <DeckCreate />
+          </Route>
+
+          <Route path={"/decks/:deckId/study"}>
+            <StudyCards />
           </Route>
 
           <Route path={"/decks/:deckId"}>

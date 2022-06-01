@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { deleteDeck, readDeck } from "../../utils/api";
 import CardList from "../Cards/CardList";
@@ -43,13 +44,18 @@ function SingleDeckDetail({
         <h2>{name}</h2>
         <p>{description}</p>
         <button onClick={handleEdit}>Edit</button>
-        <button onClick={handleStudy}>Study</button>
+        <Link to={`/decks/${id}/study`}>
+          <button>Study</button>
+        </Link>
         <button onClick={handleAddCards}>Add Cards</button>
         <button onClick={handleDelete}>Delete</button>
       </div>
       <div>
         <h2>Cards</h2>
-        <CardList cards={cards} renderSingleDeckDetail={renderSingleDeckDetail} />
+        <CardList
+          cards={cards}
+          renderSingleDeckDetail={renderSingleDeckDetail}
+        />
       </div>
     </>
   );

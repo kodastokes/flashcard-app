@@ -19,6 +19,8 @@ function SingleDeck({
     }
   };
 
+
+
   // link around the button
   // layout has a function that gets from api
   //
@@ -31,7 +33,9 @@ function SingleDeck({
       <Link to={`/decks/${id}`}>
         <button>View</button>
       </Link>
-      <button onClick={handleStudy}>Study</button>
+      <Link to={`/decks/${id}/study`}>
+       <button>Study</button>
+      </Link>
       <button onClick={handleDelete}>Delete</button>
     </div>
   );

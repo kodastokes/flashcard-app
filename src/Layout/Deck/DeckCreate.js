@@ -15,7 +15,7 @@ function DeckCreate() {
   const handleSubmit = (event) => {
     event.preventDefault();
     createDeck({ name, description }).then(({ id }) =>
-      history.push("/decks/" + id)
+      history.push(`/decks/${id}`)
     );
   };
 
