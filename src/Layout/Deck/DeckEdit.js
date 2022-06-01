@@ -13,7 +13,6 @@ function DeckEdit() {
 //   const [deck, setDeck] = useState({});
 
  const deck = {
-  id: "",
   name: "",
   description: ""
 }
@@ -34,7 +33,6 @@ function DeckEdit() {
 
   useEffect(() => {
     readDeck(deckId).then((result) => {
-      deck.name = result.name
       setInputName(result.name);
       setInputDescription(result.description);
     });

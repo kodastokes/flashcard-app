@@ -29,7 +29,7 @@ function CardEdit() {
         setInputFront(result.front);
         setInputBack(result.back);
       });
-  }, [deckId]);
+  }, [deckId, cardId]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
