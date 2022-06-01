@@ -20,7 +20,7 @@ require("cross-fetch/polyfill");
 
 jest.mock("../utils/api");
 
-describe.skip("App", () => {
+describe("App", () => {
   beforeEach(() => {
     createCard.mockResolvedValue({
       front:

@@ -19,7 +19,6 @@ function StudyCards() {
   })}, []);
 
   function nextCard(index, numberOfCards) {
-    //console.log(index);
     if (index < numberOfCards) {
       setSelectedCard(selectedCard + 1);
       isFront(true);
@@ -99,7 +98,7 @@ function StudyCards() {
         <li>Study Cards</li>
       </ol>
       <div>
-        <h2>{`${deck.name}: StudyCards`}</h2>
+        <h2>{`${deck.name}: Study Cards`}</h2>
         <div>{cards.length > 2 ? enoughCards() : notEnoughCards()}</div>
       </div>
     </div>
