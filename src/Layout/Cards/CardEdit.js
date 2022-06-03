@@ -12,29 +12,23 @@ function CardEdit() {
   const cardId = params.cardId;
 
   const [deck, setDeck] = useState({});
-  const [card, setCard] = useState([])
+  const [card, setCard] = useState([]);
 
-  const [inputFront, setInputFront] = useState("");
-  const handleInputFrontChange = (event) => setInputFront(event.target.value);
-
-  const [inputBack, setInputBack] = useState("");
-  const handleInputBackChange = (event) => setInputBack(event.target.value);
+  const handleChange = (event) => {
+    console.log(event.target.name, event.target.value);
+    setCard({ ...card, [event.target.name]: event.target.value });
+  };
 
   useEffect(() => {
     readDeck(deckId)
       .then((result) => setDeck(result))
       .then(() => readCard(cardId))
-      .then((result) => {
-        setCard(result)
-        setInputFront(result.front);
-        setInputBack(result.back);
-      });
+      .then((result) => setCard(result))
   }, [deckId, cardId]);
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    card.front = inputFront;
-    card.back = inputBack;
     updateCard(card).then(({ deckId }) => history.push(`/decks/${deckId}`));
   };
 
@@ -55,10 +49,11 @@ function CardEdit() {
         <fieldset>
           <h2> Edit Card </h2>
           <CardForm
-            front={inputFront}
-            back={inputBack}
-            handleFrontChange={handleInputFrontChange}
-            handleBackChange={handleInputBackChange}
+            front={card.front}
+            back={card.back}
+            // handleFrontChange={handleInputFrontChange}
+            // handleBackChange={handleInputBackChange}
+            handleChange = {handleChange}
           />
           <div>
             <button

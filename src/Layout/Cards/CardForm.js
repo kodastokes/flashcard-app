@@ -3,6 +3,7 @@ function CardForm({
     back,
     handleFrontChange,
     handleBackChange,
+    handleChange,
   }) {
     return (
       <>
@@ -10,10 +11,10 @@ function CardForm({
           <label htmlFor="front"> Front </label>
           <textarea
             id="front"
-            front="front"
+            name="front"
             placeholder="Front of Card"
             required={true}
-            onChange={handleFrontChange}
+            onChange={handleChange}
             value={front}
           ></textarea>
         </div>
@@ -21,10 +22,10 @@ function CardForm({
           <label htmlFor="back"> Back </label>
           <textarea
             id="back"
-            front="back"
+            name="back"
             placeholder="Back of Card"
             required={true}
-            onChange={handleBackChange}
+            onChange={handleChange}
             value={back}
           ></textarea>
         </div>

@@ -8,18 +8,17 @@ function CardCreate() {
   const params = useParams();
   const deckId = params.deckId;
 
-  const newCard = {
-    front: "",
-    back: "",
-  };
-
   const [deck, setDeck] = useState({});
-
   const [front, setFront] = useState("");
-  const handleFrontChange = (event) => setFront(event.target.value);
-
   const [back, setBack] = useState("");
-  const handleBackChange = (event) => setBack(event.target.value);
+
+  const handleChange = (event) => {
+    if (event.target.name === "front") {
+      setFront(event.target.value);
+    } else {
+      setBack(event.target.value);
+    }
+  };
 
   useEffect(() => {
     readDeck(deckId).then((result) => setDeck(result));
@@ -27,9 +26,7 @@ function CardCreate() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    newCard.front = front;
-    newCard.back = back;
-    createCard(deckId, newCard).then(() => {
+    createCard(deckId, {front, back}).then(() => {
       setFront("");
       setBack("");
     });
@@ -52,12 +49,7 @@ function CardCreate() {
       <form front="front" onSubmit={handleSubmit}>
         <fieldset>
           <h2>{deck.name}: Add Card</h2>
-          <CardForm
-            front={front}
-            back={back}
-            handleFrontChange={handleFrontChange}
-            handleBackChange={handleBackChange}
-          />
+          <CardForm front={front} back={back} handleChange={handleChange} />
           <div>
             <Link to={`/decks/${deckId}`}>
               <button>Cancel</button>
