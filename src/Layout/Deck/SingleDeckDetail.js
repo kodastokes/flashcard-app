@@ -5,9 +5,7 @@ import { useParams } from "react-router-dom";
 import { deleteDeck, readDeck } from "../../utils/api";
 import CardList from "../Cards/CardList";
 
-function SingleDeckDetail({
-  renderHomePage,
-}) {
+function SingleDeckDetail({ renderHomePage }) {
   const history = useHistory();
   const params = useParams();
   const deckId = params.deckId;
@@ -37,6 +35,14 @@ function SingleDeckDetail({
 
   return (
     <>
+      <div>
+        <ol>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>{deck.name}</li>
+        </ol>
+      </div>
       <div>
         <h2>{name}</h2>
         <p>{description}</p>

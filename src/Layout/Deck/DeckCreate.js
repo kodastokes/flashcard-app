@@ -8,10 +8,16 @@ function DeckCreate() {
   const history = useHistory();
 
   const [name, setName] = useState("");
-  const handleNameChange = (event) => setName(event.target.value);
 
   const [description, setDescription] = useState("");
-  const handleDescriptionChange = (event) => setDescription(event.target.value);
+
+  const handleChange = (event) => {
+    if (event.target.name === "name") {
+      setName(event.target.value);
+    } else {
+      setDescription(event.target.value);
+    }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -28,8 +34,7 @@ function DeckCreate() {
           <DeckForm
             name={name}
             description={description}
-            handleNameChange={handleNameChange}
-            handleDescriptionChange={handleDescriptionChange}
+            handleChange={handleChange}
           />
           <div>
             <Link to="/">

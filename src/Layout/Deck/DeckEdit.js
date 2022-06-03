@@ -10,38 +10,21 @@ function DeckEdit() {
   const params = useParams();
   const deckId = params.deckId;
 
-//   const [deck, setDeck] = useState({});
+  const [deck, setDeck] = useState({});
 
- const deck = {
-  name: "",
-  description: ""
-}
-  const [inputName, setInputName] = useState("");
-  const handleNameChange = (event) => setInputName(event.target.value);
-
-  const [inputDescription, setInputDescription] = useState("");
-  const handleDescriptionChange = (event) =>
-    setInputDescription(event.target.value);
-
-//   useEffect(() => {
-//     readDeck(deckId).then((result) => {
-//       setDeck(result);
-//       setInputName(result.name);
-//       setInputDescription(result.description);
-//     });
-//   }, [deckId]);
+  const handleChange = (event) => {
+    console.log(event.target.value, event.target.name);
+    setDeck({ ...deck, [event.target.name]: event.target.value });
+  };
 
   useEffect(() => {
     readDeck(deckId).then((result) => {
-      setInputName(result.name);
-      setInputDescription(result.description);
+      setDeck(result);
     });
   }, [deckId]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    deck.name = inputName;
-    deck.description = inputDescription;
     updateDeck(deck).then(({ id }) => history.push(`/decks/${id}`));
   };
 
@@ -62,10 +45,9 @@ function DeckEdit() {
         <fieldset>
           <h2> Edit Deck </h2>
           <DeckForm
-            name={inputName}
-            description={inputDescription}
-            handleNameChange={handleNameChange}
-            handleDescriptionChange={handleDescriptionChange}
+            name={deck.name}
+            description={deck.description}
+            handleChange={handleChange}
           />
           <div>
             <button

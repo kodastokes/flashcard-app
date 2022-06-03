@@ -1,9 +1,4 @@
-function DeckForm({
-  name,
-  description,
-  handleNameChange,
-  handleDescriptionChange,
-}) {
+function DeckForm({ name, description, handleChange }) {
   return (
     <>
       <div>
@@ -13,7 +8,7 @@ function DeckForm({
           name="name"
           placeholder="Deck Name"
           required={true}
-          onChange={handleNameChange}
+          onChange={handleChange}
           value={name}
         ></input>
       </div>
@@ -24,7 +19,7 @@ function DeckForm({
           name="description"
           placeholder="Brief description of the deck"
           required={true}
-          onChange={handleDescriptionChange}
+          onChange={handleChange}
           value={description}
         ></textarea>
       </div>
